@@ -1,0 +1,41 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Too Good To Go Mail",
+        "description": "IMAP-Zugang des Postfachs, in dem die Too-Good-To-Go-Bestätigungen ankommen.",
+        "data": {
+          "host": "IMAP-Server",
+          "port": "Port (SSL)",
+          "username": "Benutzername / E-Mail",
+          "password": "Passwort",
+          "folder": "Ordner"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Neu anmelden",
+        "data": { "password": "Passwort" }
+      }
+    },
+    "error": {
+      "invalid_auth": "Anmeldung fehlgeschlagen – Benutzername oder Passwort falsch.",
+      "cannot_connect": "Verbindung zum IMAP-Server nicht möglich."
+    },
+    "abort": {
+      "already_configured": "Dieses Postfach ist bereits eingerichtet.",
+      "reauth_successful": "Anmeldung erneuert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Optionen",
+        "data": {
+          "folder": "Ordner",
+          "sender": "Absender enthält",
+          "days": "Mails der letzten X Tage durchsuchen"
+        }
+      }
+    }
+  }
+}

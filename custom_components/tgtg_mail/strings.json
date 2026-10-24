@@ -1,0 +1,43 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Too Good To Go Mail",
+        "description": "IMAP access to the mailbox receiving Too Good To Go confirmations.",
+        "data": {
+          "host": "IMAP server",
+          "port": "Port (SSL)",
+          "username": "Username / e-mail",
+          "password": "Password",
+          "folder": "Folder"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid username or password.",
+      "cannot_connect": "Cannot connect to IMAP server."
+    },
+    "abort": {
+      "already_configured": "This mailbox is already configured.",
+      "reauth_successful": "Re-authentication successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "folder": "Folder",
+          "sender": "Sender contains",
+          "days": "Search mails of the last X days"
+        }
+      }
+    }
+  }
+}
