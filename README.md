@@ -5,6 +5,20 @@ Home-Assistant-Integration, die deine Too-Good-To-Go-Bestellbestätigungen per I
 [![Open HACS Repository on My Home Assistant](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=fumagallis4ever&repository=ha-tgtg-mail&category=integration)
 [![Add Integration to My Home Assistant](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=tgtg_mail)
 
+## Warum E-Mail statt API?
+
+Too Good To Go bietet keine offizielle API. Bestehende Integrationen nutzen die inoffizielle App-Schnittstelle – das hat einige Nachteile, die der Weg über das Postfach vermeidet:
+
+| | Inoffizielle API | E-Mail (diese Integration) |
+|---|---|---|
+| **Stabilität** | Kann sich jederzeit ändern und Integrationen lahmlegen | Ändert sich das Mail-Layout, muss nur der Parser angepasst werden |
+| **Sperrgefahr** | Zu häufige Abfragen führen zu Sperren durch TGTG | Keine Anfragen an TGTG – nur das eigene Postfach wird gelesen |
+| **Captcha / Login** | Login per PIN, teils Captcha („Additional verification required“), Tokens laufen ab | Einmalig IMAP-Zugang eintragen, fertig |
+| **Abdeckung** | Nur Favoriten-Shops (oder manuell eingetragene IDs) | Jede Bestellung, egal bei welchem Shop |
+| **Datenschutz** | Zugriff auf das komplette TGTG-Konto | Liest nur Mails vom Absender `toogoodtogo`, rein lesend (Mails bleiben ungelesen) |
+
+Einziger Nachteil: Die Integration kennt nur Bestellungen, keine verfügbaren Überraschungstüten. Wer über neue Tüten bei Favoriten benachrichtigt werden möchte, braucht weiterhin die API-Variante.
+
 ## Installation über HACS
 
 1. Oben auf **„Open HACS Repository on My“** klicken (oder in HACS → ⋮ → *Benutzerdefinierte Repositories* → `https://github.com/fumagallis4ever/ha-tgtg-mail`, Typ *Integration*).
