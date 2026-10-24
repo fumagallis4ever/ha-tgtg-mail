@@ -19,6 +19,29 @@ Home-Assistant-Integration, die deine Too-Good-To-Go-Bestellbestätigungen per I
 | `sensor.too_good_to_go_offene_abholungen` | Anzahl offener Abholungen |
 | `calendar.too_good_to_go_abholungen` | Alle Abholungen als Kalendertermine |
 
+## Dashboard-Kachel
+
+Markdown-Karte, die nur erscheint, wenn eine Abholung offen ist. Im Dashboard „Karte hinzufügen“ → *Manuell* und folgenden Code einfügen:
+
+```yaml
+type: markdown
+title: 🥐 Too Good To Go
+visibility:
+  - condition: numeric_state
+    entity: sensor.too_good_to_go_offene_abholungen
+    above: 0
+content: >-
+  {% for b in state_attr('sensor.too_good_to_go_nachste_abholung', 'bestellungen') or [] %}
+  **{{ b.geschaeft }}**  
+  📅 {{ 'Heute' if b.datum == now().strftime('%d.%m.%Y') else b.datum }}, {{ b.abholzeit }} Uhr  
+  📍 {{ b.adresse }}  
+  🛍️ {{ b.anzahl }}×
+  {% if not loop.last %}<hr>{% endif %}
+  {% endfor %}
+```
+
+Wer den Preis anzeigen möchte, ergänzt hinter `{{ b.anzahl }}×` noch ` · {{ b.preis }}`.
+
 ## Funktionsweise
 
 - Abruf alle 5 Minuten, nur lesend (Mails bleiben ungelesen).
